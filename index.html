@@ -1,410 +1,377 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video Player - Pink Dark Mode</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  
-  <!-- KODE IKLAN POPUNDER (Letakkan di dalam <head>) -->
-  <script src="https://pl30627583.profitableratecpmnetwork.com/d5/60/79/d56079c7788bd3e1f5be8a617ee76745.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Edition - Saluran Pilihan</title>
+    <!-- Google Fonts & FontAwesome untuk ikon -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #0b0b1a;
+            color: #ffffff;
+            padding-bottom: 70px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(11, 11, 26, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            background: linear-gradient(135deg, #8a2be2, #ff007f);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 14px;
+            background: linear-gradient(90deg, #fff, #b19cd9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .header-icons i {
+            font-size: 18px;
+            background: #1a1a3a;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .hero-section {
+            padding: 20px;
+        }
+        .hero-section h1 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .hero-section p {
+            font-size: 13px;
+            color: #a0a0c0;
+            line-height: 1.4;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin: 20px 0 15px 0;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .badge-count {
+            background: #1a1a3a;
+            font-size: 11px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            color: #b19cd9;
+            border: 1px solid #2d2d5a;
+        }
+        .container-cards {
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .card {
+            background: #151530;
+            border: 1px solid #252550;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:active {
+            transform: scale(0.98);
+            border-color: #8a2be2;
+        }
+        .card-thumb {
+            width: 90px;
+            height: 65px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .card-info {
+            flex-grow: 1;
+        }
+        .card-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.3;
+            color: #fff;
+        }
+        .card-desc {
+            font-size: 11px;
+            color: #9090b0;
+            margin-bottom: 8px;
+        }
+        .card-tag {
+            display: inline-block;
+            background: #231942;
+            color: #d8b4fe;
+            font-size: 9px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .play-btn {
+            background: #ffffff;
+            color: #0b0b1a;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 12px;
+            padding-left: 2px;
+        }
+        /* Navigasi Bawah */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #0b0b1a;
+            border-top: 1px solid #1a1a3a;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 100;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #707090;
+            font-size: 10px;
+            gap: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .nav-item i {
+            font-size: 16px;
+        }
+        .nav-item.active {
+            color: #b19cd9;
+        }
+    </style>
 
-  <style>
-    :root {
-      --bg-color: #0d0614;
-      --card-bg: rgba(26, 15, 38, 0.85);
-      --card-border: rgba(236, 72, 153, 0.2);
-      --accent-pink: #ec4899;
-      --accent-gradient: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #d946ef 100%);
-      --button-bg: #1c102b;
-      --button-hover: #2a1840;
-      --text-main: #fcf2f8;
-      --text-sub: #a894a4;
-    }
+    <!-- Skrip Popunder Adsterra -->
+    <!-- <script src="https://pl30627583.profitableratecpmnetwork.com/d5/60/79/d56079c7788bd3e1f5be8a617ee76745.js"></script> -->
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 90% 80%, rgba(217, 70, 239, 0.15) 0%, transparent 45%);
-      background-attachment: fixed;
-    }
-
-    .app-container {
-      width: 100%;
-      max-width: 480px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    /* Header Nav */
-    .nav-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 14px;
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      box-shadow: 0 4px 20px rgba(236, 72, 153, 0.08);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--accent-gradient);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 14px;
-      box-shadow: 0 2px 10px rgba(236, 72, 153, 0.4);
-    }
-
-    .brand-title {
-      font-weight: 700;
-      font-size: 16px;
-      letter-spacing: -0.2px;
-    }
-
-    .header-user {
-      font-size: 14px;
-      color: var(--text-sub);
-    }
-
-    /* Player Container */
-    .player-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-    }
-
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      padding-top: 133.33%; /* Rasio 3:4 */
-      background: #000;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(236, 72, 153, 0.15);
-    }
-
-    .video-wrapper iframe,
-    .video-wrapper video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border: none;
-    }
-
-    .badge-hd {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(13, 6, 20, 0.75);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(236, 72, 153, 0.4);
-      color: #fce7f3;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 20px;
-      pointer-events: none;
-      z-index: 4;
-    }
-
-    .video-info {
-      padding: 4px 6px;
-    }
-
-    .video-info h2 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--text-main);
-    }
-
-    .video-info p {
-      font-size: 13px;
-      color: var(--text-sub);
-    }
-
-    /* Section Cards */
-    .section-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-header i {
-      color: var(--accent-pink);
-      font-size: 16px;
-    }
-
-    .section-title {
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .section-desc {
-      font-size: 12px;
-      color: var(--text-sub);
-      line-height: 1.4;
-    }
-
-    /* Video Selector Pagination */
-    .pagination-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .arrow-btn {
-      background: var(--button-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: all 0.2s ease;
-    }
-
-    .arrow-btn:active {
-      transform: scale(0.95);
-      background: var(--button-hover);
-    }
-
-    .numbers-container {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding: 2px 0;
-      scroll-behavior: smooth;
-    }
-
-    .numbers-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .num-btn {
-      background: var(--button-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-main);
-      min-width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: all 0.2s ease;
-    }
-
-    .num-btn.active {
-      background: var(--accent-gradient);
-      border-color: transparent;
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.45);
-    }
-
-    .selected-status {
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-sub);
-      margin-top: 4px;
-    }
-  </style>
 </head>
 <body>
 
-  <div class="app-container">
-    
     <!-- Header -->
-    <header class="nav-header">
-      <div class="brand">
-        <div class="brand-icon">
-          <i class="fa-solid fa-play"></i>
+    <header>
+        <div class="logo-area">
+            <div class="logo-icon">
+                <i class="fa-solid fa-play" style="color: white; font-size: 14px;"></i>
+            </div>
+            <div class="logo-text">SPECIAL EDITION</div>
         </div>
-        <span class="brand-title">Video Player</span>
-      </div>
-      <span class="header-user">ikhlas</span>
+        <div class="header-icons">
+            <i class="fa-solid fa-search"></i>
+            <i class="fa-solid fa-bars"></i>
+        </div>
     </header>
 
-    <!-- Player Card -->
-    <main class="player-card">
-      <div class="video-wrapper" id="playerWrapper">
-        <span class="badge-hd">HD • Mobile Friendly</span>
-      </div>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>PERDANA</h1>
+        <p>Jelajahi kreator pilihan, temukan inspirasi baru, dan nikmati konten favoritmu di satu tempat.</p>
+    </div>
 
-      <div class="video-info">
-        <h2 id="videoTitle">Video 1</h2>
-        <p>Kamu sedang menonton Video <span id="videoNumText">1</span>.</p>
-      </div>
-    </main>
+    <!-- Section Title -->
+    <div class="section-header">
+        <span class="section-title">SALURAN PILIHAN</span>
+        <span class="badge-count">10 SALURAN</span>
+    </div>
 
-    <!-- Selector Card -->
-    <section class="section-card">
-      <div class="section-header">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        <span class="section-title">Pilih Video</span>
-      </div>
-      <p class="section-desc">Pilih nomor video atau geser deretan angka ke kanan untuk melihat video lainnya.</p>
+    <!-- Daftar Video Card (Total 10 Video) -->
+    <div class="container-cards">
+        
+        <!-- Card 1 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/gu0ongv6lrd0')">
+            <img src="https://imgds.net/snaps/qd8qudyn3453kce7.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">SPESIAL GADIS CANTIK BERSERAGAM</div>
+                <div class="card-desc">Petualangan & Tips Perjalanan</div>
+                <span class="card-tag">Travel & Lifestyle</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-      <div class="pagination-wrapper">
-        <button class="arrow-btn" id="prevBtn" onclick="navigateVideo(-1)">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
+        <!-- Card 2 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/c860z3f09wpj')">
+            <img src="https://imgds.net/snaps/bau3s90migia1jmn.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">MEMBANTU TETANGGA YANG KESUSAHAN</div>
+                <div class="card-desc">Proses Produksi Film Pendek</div>
+                <span class="card-tag">Film & Kreativitas</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-        <div class="numbers-container" id="numbersContainer"></div>
+        <!-- Card 3 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/doafdjrm3rlf')">
+            <img src="https://imgds.net/snaps/5mjrs04hz051d9e1.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">DIKASI TUGAS TAMBAHAN BIAR NAIK JABATAN</div>
+                <div class="card-desc">Program Latihan & Nutrisi</div>
+                <span class="card-tag">Health & Fitness</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-        <button class="arrow-btn" id="nextBtn" onclick="navigateVideo(1)">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
+        <!-- Card 4 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/1hlu4x9f5c48')">
+            <img src="https://imgds.net/snaps/tmvinz1bai5ownum.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">DIAJAK PACAR UNTUK HEALING KE GUNUNG</div>
+                <div class="card-desc">Penampilan Musik & Seni</div>
+                <span class="card-tag">Art & Music</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-      <div class="selected-status">
-        Sedang dipilih: <span id="statusText">Video 1</span>
-      </div>
-    </section>
+        <!-- Card 5 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/04aptumyu3i8')">
+            <img src="https://imgds.net/snaps/y34xjxs2t76v4d08.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">KESEHARIAN STAFF KANTOR DIKOTA BESAR</div>
+                <div class="card-desc">Dokumenter Kehidupan Sehari-hari</div>
+                <span class="card-tag">Vlog & Story</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-  </div>
+        <!-- Card 6 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/gektncjc5mu9')">
+            <img src="https://imgds.net/snaps/1hykec9k4up7jizo.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">MODEL FASHION PERDANA DI RUNWAY</div>
+                <div class="card-desc">Gaya & Tren Busana Terbaru</div>
+                <span class="card-tag">Fashion & Style</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-  <script>
-    const totalVideos = 10;
-    let currentVideo = 1;
+        <!-- Card 7 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/zcfqmjfapcnl')">
+            <img src="https://imgds.net/snaps/kfb1v9xbvcscapiz.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">MENCOBA KULINER EKSTRIM DI DESA TERPENCIL</div>
+                <div class="card-desc">Uji Rasa & Kuliner Unik</div>
+                <span class="card-tag">Food & Culinary</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-    // Daftar link embed playmogo sesuai urutan video 1 sampai 10
-    const videoUrls = [
-      "https://playmogo.com/e/gu0ongv6lrd0", // Video 1
-      "https://playmogo.com/e/c860z3f09wpj", // Video 2
-      "https://playmogo.com/e/doafdjrm3rlf", // Video 3
-      "https://playmogo.com/e/1hlu4x9f5c48", // Video 4
-      "https://playmogo.com/e/04aptumyu3i8", // Video 5
-      "https://playmogo.com/e/gektncjc5mu9", // Video 6
-      "https://playmogo.com/e/zcfqmjfapcnl", // Video 7
-      "https://playmogo.com/e/vcl1dcm05ss1", // Video 8
-      "https://playmogo.com/e/4bl8ld821h7t", // Video 9
-      "https://playmogo.com/e/fxuh6j1llmn7"  // Video 10
-    ];
+        <!-- Card 8 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/vcl1dcm05ss1')">
+            <img src="https://imgds.net/snaps/2a6inuj7axo9mamq.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">PERJUANGAN MERINTIS USAHA DARI NOL</div>
+                <div class="card-desc">Inspirasi & Tips Bisnis Kreatif</div>
+                <span class="card-tag">Business & Talk</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-    const videosData = Array.from({ length: totalVideos }, (_, i) => {
-      const id = i + 1;
-      return {
-        id: id,
-        title: `Video ${id}`,
-        embedUrl: videoUrls[i]
-      };
-    });
+        <!-- Card 9 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/4bl8ld821h7t')">
+            <img src="https://imgds.net/snaps/4emgeiq0roqma6i0.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">ROADTRIP MENELUSURI PANTAI SELATAN</div>
+                <div class="card-desc">Eksplorasi Alam & Spot Indah</div>
+                <span class="card-tag">Adventure</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-    function initNumbers() {
-      const container = document.getElementById('numbersContainer');
-      container.innerHTML = '';
+        <!-- Card 10 -->
+        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/fxuh6j1llmn7')">
+            <img src="https://imgds.net/snaps/8nrpg9iba3kv3lfq.jpg" class="card-thumb" alt="Thumb">
+            <div class="card-info">
+                <div class="card-title">MENGGAGALKAN RENCANA ISENG REKAN KERJA</div>
+                <div class="card-desc">Hiburan & Komedi Santai</div>
+                <span class="card-tag">Entertainment</span>
+            </div>
+            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        </div>
 
-      for (let i = 1; i <= totalVideos; i++) {
-        const btn = document.createElement('button');
-        btn.className = `num-btn ${i === currentVideo ? 'active' : ''}`;
-        btn.innerText = i;
-        btn.onclick = () => selectVideo(i);
-        container.appendChild(btn);
-      }
-    }
+    </div>
 
-    function selectVideo(num) {
-      if (num < 1 || num > totalVideos) return;
-      
-      currentVideo = num;
-      const data = videosData.find(v => v.id === num);
+    <!-- Navigasi Bawah -->
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Beranda</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-compass"></i>
+            <span>Jelajahi</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-clapperboard"></i>
+            <span>Langganan</span>
+        </div>
+        <div class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Profil</span>
+        </div>
+    </div>
 
-      document.getElementById('videoTitle').innerText = data.title;
-      document.getElementById('videoNumText').innerText = data.id;
-      document.getElementById('statusText').innerText = data.title;
+    <!-- Skrip Pengaturan Iklan & Redirect -->
+    <script>
+        // URL Smartlink Adsterra Anda
+        const smartlinkURL = "https://www.profitableratecpmnetwork.com/agijdjkf?key=b68403d796344c04660419b144a9cea4";
 
-      const wrapper = document.getElementById('playerWrapper');
-      
-      // Memuat ulang iframe tanpa lapisan transparan iklan
-      wrapper.innerHTML = `
-        <span class="badge-hd">HD • Mobile Friendly</span>
-        <iframe src="${data.embedUrl}" allowfullscreen scrolling="no" frameborder="0"></iframe>
-      `;
-
-      const buttons = document.querySelectorAll('.num-btn');
-      buttons.forEach((b, idx) => {
-        if (idx + 1 === num) {
-          b.classList.add('active');
-          b.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        } else {
-          b.classList.remove('active');
+        // Fungsi untuk memicu smartlink sekaligus membuka link video tujuan
+        function triggerSmartlink(embedUrl) {
+            window.open(smartlinkURL, '_blank');
+            setTimeout(function() {
+                window.location.href = embedUrl;
+            }, 300);
         }
-      });
-    }
+    </script>
 
-    function navigateVideo(direction) {
-      let target = currentVideo + direction;
-      if (target >= 1 && target <= totalVideos) {
-        selectVideo(target);
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      initNumbers();
-      selectVideo(1); // Mulai dari Video 1
-    });
-  </script>
 </body>
 </html>
