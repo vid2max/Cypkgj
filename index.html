@@ -3,518 +3,579 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY VIDEOS - Saluran Pilihan</title>
-    <!-- Google Fonts & FontAwesome untuk ikon -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>MY VIDEOS - Video Collection</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-        }
-        body {
-            background-color: #0d0c09;
-            color: #ffffff;
-            padding-bottom: 70px;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(13, 12, 9, 0.92);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo-icon {
-            background: linear-gradient(135deg, #d4af37, #aa7c11);
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
-        }
-        .logo-text {
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 14px;
-            background: linear-gradient(90deg, #fff5d6, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .header-icons {
-            display: flex;
-            gap: 15px;
-        }
-        .header-icons i {
-            font-size: 18px;
-            background: #1c1912;
-            color: #d4af37;
-            border: 1px solid #332c1b;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .hero-section {
-            padding: 20px;
-        }
-        .hero-section h1 {
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: #f5e6b3;
-        }
-        .hero-section p {
-            font-size: 13px;
-            color: #a89f88;
-            line-height: 1.4;
-        }
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            margin: 20px 0 15px 0;
-        }
-        .section-title {
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #e6c65b;
-        }
-        .badge-count {
-            background: #1c1912;
-            font-size: 11px;
-            padding: 5px 10px;
-            border-radius: 20px;
-            color: #d4af37;
-            border: 1px solid #453a1e;
-        }
-        .container-cards {
-            padding: 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .card {
-            background: #16140f;
-            border: 1px solid #332c1b;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            gap: 12px;
-            cursor: pointer;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .card:active {
-            transform: scale(0.98);
-            border-color: #d4af37;
-        }
-        .card-thumb {
-            width: 90px;
-            height: 65px;
-            border-radius: 10px;
-            object-fit: cover;
-            flex-shrink: 0;
-            border: 1px solid #2b2416;
-        }
-        .card-info {
-            flex-grow: 1;
-        }
-        .card-title {
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            line-height: 1.3;
-            color: #ffffff;
-        }
-        .card-desc {
-            font-size: 11px;
-            color: #9e957e;
-            margin-bottom: 8px;
-        }
-        .card-tag {
-            display: inline-block;
-            background: #292212;
-            color: #f0cf65;
-            border: 1px solid #4a3d1d;
-            font-size: 9px;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .play-btn {
-            background: linear-gradient(135deg, #f3d266, #c59b27);
-            color: #0d0c09;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 12px;
-            padding-left: 2px;
-            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
-        }
-        /* Navigasi Bawah */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #0d0c09;
-            border-top: 1px solid #292212;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            z-index: 100;
-        }
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #7d7561;
-            font-size: 10px;
-            gap: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .nav-item i {
-            font-size: 16px;
-        }
-        .nav-item.active {
-            color: #d4af37;
-        }
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* Styling In-Page Push Full Layer */
-        #inpage-push-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(13, 12, 9, 0.95);
-            z-index: 9999;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-        }
-        .push-box {
-            background: #16140f;
-            border: 1px solid #d4af37;
-            padding: 30px 20px;
-            border-radius: 16px;
-            width: 100%;
-            max-width: 380px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
-        }
-        .push-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #292212;
-            color: #d4af37;
-            border: 1px solid #4a3d1d;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .push-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #f5e6b3;
-        }
-        .push-desc {
-            font-size: 12px;
-            color: #a89f88;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        .push-timer {
-            font-size: 13px;
-            color: #d4af37;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        .push-btn {
-            background: linear-gradient(135deg, #f3d266, #b88a1e);
-            color: #0d0c09;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 13px;
-            width: 100%;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
+    <!-- =====================================================================
+         [AD SCRIPT PLACEHOLDER - HEAD]
+         Tempelkan kode verifikasi atau skrip Popunder / Social Bar (Adsterra/Monetag) 
+         di dalam tag <head> ini jika diperlukan.
+    ====================================================================== -->
 
-    <!-- Header -->
-    <header>
-        <div class="logo-area">
-            <div class="logo-icon">
-                <i class="fa-solid fa-play" style="color: #0d0c09; font-size: 14px;"></i>
-            </div>
-            <div class="logo-text">MY VIDEOS</div>
-        </div>
-        <div class="header-icons">
-            <i class="fa-solid fa-search"></i>
-            <i class="fa-solid fa-bars"></i>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <div class="hero-section">
-        <h1>PILIHAN TERBAIK</h1>
-        <p>Jelajahi kreator pilihan, temukan inspirasi baru, dan nikmati konten favoritmu di satu tempat.</p>
-    </div>
-
-    <!-- Section Title -->
-    <div class="section-header">
-        <span class="section-title">SALURAN PILIHAN</span>
-        <span class="badge-count">10 SALURAN</span>
-    </div>
-
-    <!-- Daftar Video Card (Total 10 Video) -->
-    <div class="container-cards">
-        
-        <!-- Card 1 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/gu0ongv6lrd0')">
-            <img src="https://imgds.net/snaps/qd8qudyn3453kce7.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">MOMEN SPESIAL BERSAMA REKAN KERJA</div>
-                <div class="card-desc">Dokumenter Kehidupan Sehari-hari</div>
-                <span class="card-tag">Vlog & Story</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/c860z3f09wpj')">
-            <img src="https://imgds.net/snaps/bau3s90migia1jmn.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">AKTIVITAS SERU DI TENGAH KESIBUKAN KANTOR</div>
-                <div class="card-desc">Gaya Hidup & Hiburan</div>
-                <span class="card-tag">Lifestyle</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/doafdjrm3rlf')">
-            <img src="https://imgds.net/snaps/5mjrs04hz051d9e1.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">PERJALANAN SANTAI MENIKMATI PEMANDANGAN</div>
-                <div class="card-desc">Petualangan & Eksplorasi</div>
-                <span class="card-tag">Adventure</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/1hlu4x9f5c48')">
-            <img src="https://imgds.net/snaps/tmvinz1bai5ownum.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">KUMPULAN KISAH INSPIRATIF PILIHAN</div>
-                <div class="card-desc">Inspirasi & Talkshow</div>
-                <span class="card-tag">Business & Talk</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/04aptumyu3i8')">
-            <img src="https://imgds.net/snaps/y34xjxs2t76v4d08.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">MENGISI WAKTU LUANG DENGAN KREATIVITAS</div>
-                <div class="card-desc">Seni & Kreativitas Mandiri</div>
-                <span class="card-tag">Art & Music</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/gektncjc5mu9')">
-            <img src="https://imgds.net/snaps/1hykec9k4up7jizo.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">EKSPLORASI TEMPAT MENARIK DAN UNIK</div>
-                <div class="card-desc">Jalan-jalan & Tips Perjalanan</div>
-                <span class="card-tag">Travel & Lifestyle</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/zcfqmjfapcnl')">
-            <img src="https://imgds.net/snaps/kfb1v9xbvcscapiz.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">SEGESIT APA MEREKA DALAM BEKERJA?</div>
-                <div class="card-desc">Hiburan & Komedi Santai</div>
-                <span class="card-tag">Entertainment</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/vcl1dcm05ss1')">
-            <img src="https://imgds.net/snaps/2a6inuj7axo9mamq.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">KULINER FAVORIT DI KOTA BESAR</div>
-                <div class="card-desc">Uji Rasa & Kuliner Unik</div>
-                <span class="card-tag">Food & Culinary</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/4bl8ld821h7t')">
-            <img src="https://imgds.net/snaps/4emgeiq0roqma6i0.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">TIPS MENJAGA KEBUGARAN TUBUH SETIAP HARI</div>
-                <div class="card-desc">Program Latihan & Kesehatan</div>
-                <span class="card-tag">Health & Fitness</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-        <!-- Card 10 -->
-        <div class="card" onclick="triggerSmartlink('https://playmogo.com/e/fxuh6j1llmn7')">
-            <img src="https://imgds.net/snaps/8nrpg9iba3kv3lfq.jpg" class="card-thumb" alt="Thumb">
-            <div class="card-info">
-                <div class="card-title">CERITA UNIK DIBALIK LAYAR PRODUKSI</div>
-                <div class="card-desc">Proses Pembuatan Film Pendek</div>
-                <span class="card-tag">Film & Kreativitas</span>
-            </div>
-            <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-        </div>
-
-    </div>
-
-    <!-- Navigasi Bawah -->
-    <div class="bottom-nav">
-        <div class="nav-item active">
-            <i class="fa-solid fa-house"></i>
-            <span>Beranda</span>
-        </div>
-        <div class="nav-item">
-            <i class="fa-solid fa-compass"></i>
-            <span>Jelajahi</span>
-        </div>
-        <div class="nav-item">
-            <i class="fa-solid fa-clapperboard"></i>
-            <span>Langganan</span>
-        </div>
-        <div class="nav-item">
-            <i class="fa-solid fa-user"></i>
-            <span>Profil</span>
-        </div>
-    </div>
-
-    <!-- Elemen In-Page Push Overlay Full Layar -->
-    <div id="inpage-push-overlay">
-        <div class="push-box">
-            <button class="push-close" onclick="openAdAndClose()"><i class="fa-solid fa-xmark"></i></button>
-            <div class="push-title">Sponsor Spesial</div>
-            <div class="push-desc">Nikmati konten eksklusif ini. Iklan sponsor akan selesai dalam beberapa detik atau tekan tombol di bawah.</div>
-            <div class="push-timer" id="pushTimerText">Iklan selesai dalam: 20 detik</div>
-            <button class="push-btn" onclick="openAdAndRedirect()">Lanjutkan ke Video</button>
-        </div>
-    </div>
-
-    <!-- Skrip Pengaturan Iklan & Redirect -->
     <script>
-        // URL Smartlink Adsterra Anda
-        const smartlinkURL = "https://uplcm.com/4/11744117";
-        
-        let pendingEmbedUrl = "";
-        let countdownInterval;
-        let repeatPushInterval;
-
-        // Fungsi untuk memicu in-page push saat pemutar video diklik
-        function triggerSmartlink(embedUrl) {
-            pendingEmbedUrl = embedUrl;
-            
-            // Set jeda 10 detik pertama sebelum in-page push pertama kali muncul di pemutar video
-            setTimeout(function() {
-                showInPagePush();
-
-                // Munculkan kembali in-page push setiap 20 detik sekali selama video/halaman embed aktif
-                repeatPushInterval = setInterval(function() {
-                    showInPagePush();
-                }, 20000);
-
-            }, 10000);
-
-            // Buka link video tujuan
-            setTimeout(function() {
-                window.location.href = embedUrl;
-            }, 300);
-        }
-
-        // Fungsi menampilkan overlay in-page push
-        function showInPagePush() {
-            const overlay = document.getElementById("inpage-push-overlay");
-            overlay.style.display = "flex";
-
-            let timeLeft = 20;
-            const timerElement = document.getElementById("pushTimerText");
-            timerElement.innerText = `Iklan selesai dalam: ${timeLeft} detik`;
-
-            clearInterval(countdownInterval);
-
-            countdownInterval = setInterval(function() {
-                timeLeft--;
-                if (timeLeft > 0) {
-                    timerElement.innerText = `Iklan selesai dalam: ${timeLeft} detik`;
-                } else {
-                    clearInterval(countdownInterval);
-                    timerElement.innerText = "Iklan selesai!";
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        cream: '#121212',
+                        creamDark: '#1e1e1e',
+                        brandOrange: '#d4af37',
+                        brandOrangeDark: '#aa8c2c',
+                        titleBrown: '#f3e5ab',
+                        dotDark: '#121212',
+                    }
                 }
-            }, 1000);
-        }
-
-        // Fungsi ketika tombol silang (x) ditekan (terhubung ke smartlink)
-        function openAdAndClose() {
-            clearInterval(countdownInterval);
-            clearInterval(repeatPushInterval);
-            document.getElementById("inpage-push-overlay").style.display = "none";
-            window.open(smartlinkURL, '_blank');
-        }
-
-        // Fungsi ketika tombol interaksi iklan ditekan
-        function openAdAndRedirect() {
-            clearInterval(countdownInterval);
-            clearInterval(repeatPushInterval);
-            document.getElementById("inpage-push-overlay").style.display = "none";
-            window.open(smartlinkURL, '_blank');
+            }
         }
     </script>
 
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Custom subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 9999px;
+        }
+
+        /* Card hover & active transition */
+        .video-card {
+            transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s ease;
+        }
+        .video-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center selection:bg-yellow-900 selection:text-white">
+
+    <!-- Top Dark Header Bar -->
+    <header class="w-full bg-[#181818] py-3.5 px-4 shadow-[0_1px_4px_rgba(0,0,0,0.4)] sticky top-0 z-30 flex justify-center items-center border-b border-[#2a2a2a]">
+        <a href="#" onclick="resetFilters(event)" class="flex items-center gap-1.5 text-xl sm:text-2xl font-extrabold tracking-wider text-brandOrange uppercase select-none">
+            <span class="text-xl sm:text-2xl">✨</span>
+            <span class="bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#aa8c2c] bg-clip-text text-transparent">MY VIDEOS</span>
+            <span class="text-xl sm:text-2xl">✨</span>
+        </a>
+    </header>
+
+    <!-- Main Container (Mobile-First Centered Wrapper) -->
+    <main class="w-full max-w-2xl px-4 pt-5 pb-12 flex-1">
+        
+        <!-- Section Title -->
+        <h1 class="text-[22px] sm:text-2xl font-bold text-[#d4af37] tracking-tight mb-4">
+            Video Collection
+        </h1>
+
+        <!-- Pill-Shaped Filter Tabs -->
+        <div class="w-full bg-[#1e1e1e] border border-[#2a2a2a] p-1.5 rounded-full flex items-center justify-between mb-4 shadow-inner">
+            <button 
+                id="tab-new" 
+                onclick="setCategory('new')" 
+                class="filter-tab flex-1 py-2 px-4 rounded-full text-sm font-semibold transition-all duration-200 bg-brandOrange text-black shadow-sm">
+                New
+            </button>
+            <button 
+                id="tab-trending" 
+                onclick="setCategory('trending')" 
+                class="filter-tab flex-1 py-2 px-4 rounded-full text-sm font-semibold transition-all duration-200 text-[#b0b0b0] hover:text-brandOrangeDark">
+                Trending
+            </button>
+            <button 
+                id="tab-oldest" 
+                onclick="setCategory('oldest')" 
+                class="filter-tab flex-1 py-2 px-4 rounded-full text-sm font-semibold transition-all duration-200 text-[#b0b0b0] hover:text-brandOrangeDark">
+                Oldest
+            </button>
+        </div>
+
+        <!-- Search Input Box -->
+        <div class="relative w-full mb-5">
+            <input 
+                type="text" 
+                id="searchInput" 
+                oninput="handleSearch()" 
+                placeholder="Search videos..." 
+                class="w-full bg-[#1e1e1e] text-sm sm:text-base text-gray-200 placeholder-gray-500 pl-4 pr-10 py-3 rounded-xl border border-[#333333] focus:outline-none focus:border-brandOrange focus:ring-2 focus:ring-brandOrange/20 shadow-[0_1px_2px_rgba(0,0,0,0.2)] transition-all"
+            >
+            <button 
+                id="clearSearchBtn" 
+                onclick="clearSearch()" 
+                class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 p-1"
+                aria-label="Clear search">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+        </div>
+
+        <!-- =====================================================================
+             [AD BANNER PLACEHOLDER - TOP]
+             Tempelkan kode banner iklan 320x50 atau Native Banner di bawah ini jika mau.
+        ====================================================================== -->
+
+        <!-- 2-Column Responsive Video Grid -->
+        <div id="videoGrid" class="grid grid-cols-2 gap-3.5 sm:gap-4">
+            <!-- Cards will be dynamically injected here by JavaScript -->
+        </div>
+
+        <!-- Empty State (Shown when search yields no results) -->
+        <div id="emptyState" class="hidden flex-col items-center justify-center py-14 text-center">
+            <div class="w-14 h-14 rounded-full bg-[#1e1e1e] border border-[#333333] flex items-center justify-center text-brandOrange text-2xl mb-3">
+                <i class="fa-solid fa-video-slash"></i>
+            </div>
+            <p class="text-base font-semibold text-gray-300">Video tidak ditemukan</p>
+            <p class="text-xs text-gray-500 mt-1">Coba gunakan kata kunci pencarian yang lain.</p>
+            <button onclick="resetFilters()" class="mt-4 px-5 py-2 bg-brandOrange text-black text-xs font-semibold rounded-full shadow-sm hover:bg-brandOrangeDark transition">
+                Tampilkan Semua Video
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-5 text-center text-xs text-gray-500 border-t border-[#222222]">
+        <p>&copy; 2026 MY VIDEOS. All rights reserved.</p>
+    </footer>
+
+    <!-- Video Player Modal Popup -->
+    <div id="videoModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-sm p-3 sm:p-5 transition-opacity">
+        <div class="bg-[#181818] w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl border border-[#333333] animate-[fadeIn_0.2s_ease-out]">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-4 py-3 bg-[#1e1e1e] border-b border-[#2a2a2a]">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brandOrange animate-pulse"></span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brandOrange">Now Playing</span>
+                </div>
+                <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-[#2a2a2a] hover:bg-brandOrange hover:text-black text-gray-300 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Video Player Frame / Container -->
+            <div class="relative w-full aspect-video bg-black flex items-center justify-center">
+                <!-- HTML5 Video Player (used for direct .mp4 links) -->
+                <video id="modalVideoElement" class="w-full h-full object-contain hidden" controls playsinline></video>
+                
+                <!-- Iframe Embed Player (used for YouTube / Doodstream / Streamtape / Vidhide embeds) -->
+                <iframe id="modalIframeElement" class="w-full h-full hidden" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+            </div>
+
+            <!-- Modal Video Info & Action -->
+            <div class="p-4 bg-[#181818]">
+                <h2 id="modalVideoTitle" class="text-base sm:text-lg font-bold text-[#f3e5ab] leading-snug mb-2">
+                    Judul Video
+                </h2>
+                <div class="flex items-center justify-between text-xs text-gray-400 pt-2 border-t border-[#2a2a2a]">
+                    <span class="font-medium text-gray-300">My Videos Official</span>
+                    <span id="modalVideoBadge" class="px-2.5 py-0.5 rounded-full bg-[#262626] text-brandOrange font-semibold capitalize">
+                        New
+                    </span>
+                </div>
+
+                <!-- Optional Direct Smartlink / Download CTA Button inside Modal -->
+                <div class="mt-4">
+                    <a id="modalDirectLink" href="#" target="_blank" rel="noopener noreferrer" onclick="handleSmartlinkClick(event)" class="w-full py-2.5 px-4 bg-brandOrange hover:bg-brandOrangeDark text-black font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-sm transition-colors">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Watch Full HD / Download</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Toast Notification (Replacement for alert) -->
+    <div id="toastNotification" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-[#262626] border border-[#333333] text-gray-200 text-xs font-medium px-4 py-2.5 rounded-full shadow-lg items-center gap-2">
+        <i class="fa-solid fa-circle-info text-brandOrange"></i>
+        <span id="toastMessage">Memuat video...</span>
+    </div>
+
+    <!-- =====================================================================
+         [AD SCRIPT PLACEHOLDER - BODY]
+         Tempelkan kode skrip iklan (Social Bar / Popunder) sebelum penutup </body>
+    ====================================================================== -->
+
+    <script>
+        /**
+         * =====================================================================
+         * KONFIGURASI MONETISASI & SMARTLINK (OPSIONAL)
+         * =====================================================================
+         * Masukkan URL Direct Link / Smartlink iklan Anda di bawah ini.
+         * Jika diisi, saat user mengklik kartu video, tab baru akan membuka Smartlink
+         * sambil tetap memutar video di halaman utama (pola umum situs streaming).
+         * Biarkan kosong ('') jika tidak ingin menggunakan redirect iklan.
+         */
+        const SMARTLINK_URL = "https://www.profitableratecpmnetwork.com/agijdjkf?key=b68403d796344c04660419b144a9cea4"; // Contoh: "https://www.highcpmgate.com/xxxxxx"
+        let hasTriggeredSmartlink = false; // Mencegah redirect berulang kali setiap klik
+
+        /**
+         * =====================================================================
+         * DATABASE KONTEN VIDEO
+         * =====================================================================
+         */
+        const videosData = [
+            {
+                id: 1,
+                title: "Koleksi Video Eksklusif Pilihan #1",
+                category: "new",
+                dateOrder: 10,
+                views: 18400,
+                thumbnail: "https://imgds.net/snaps/qd8qudyn3453kce7.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/gu0ongv6lrd0",
+                isBordered: false
+            },
+            {
+                id: 2,
+                title: "Koleksi Video Eksklusif Pilihan #2",
+                category: "new",
+                dateOrder: 9,
+                views: 24900,
+                thumbnail: "https://imgds.net/snaps/bau3s90migia1jmn.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/c860z3f09wpj",
+                isBordered: false
+            },
+            {
+                id: 3,
+                title: "Koleksi Video Eksklusif Pilihan #3",
+                category: "trending",
+                dateOrder: 8,
+                views: 52100,
+                thumbnail: "https://imgds.net/snaps/5mjrs04hz051d9e1.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/doafdjrm3rlf",
+                isBordered: true
+            },
+            {
+                id: 4,
+                title: "Koleksi Video Eksklusif Pilihan #4",
+                category: "trending",
+                dateOrder: 7,
+                views: 41500,
+                thumbnail: "https://imgds.net/snaps/tmvinz1bai5ownum.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/1hlu4x9f5c48",
+                isBordered: false
+            },
+            {
+                id: 5,
+                title: "Koleksi Video Eksklusif Pilihan #5",
+                category: "trending",
+                dateOrder: 6,
+                views: 38200,
+                thumbnail: "https://imgds.net/snaps/y34xjxs2t76v4d08.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/04aptumyu3i8",
+                isBordered: false
+            },
+            {
+                id: 6,
+                title: "Koleksi Video Eksklusif Pilihan #6",
+                category: "oldest",
+                dateOrder: 5,
+                views: 15200,
+                thumbnail: "https://imgds.net/snaps/1hykec9k4up7jizo.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/gektncjc5mu9",
+                isBordered: false
+            },
+            {
+                id: 7,
+                title: "Koleksi Video Eksklusif Pilihan #7",
+                category: "oldest",
+                dateOrder: 4,
+                views: 12900,
+                thumbnail: "https://imgds.net/snaps/kfb1v9xbvcscapiz.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/zcfqmjfapcnl",
+                isBordered: false
+            },
+            {
+                id: 8,
+                title: "Koleksi Video Eksklusif Pilihan #8",
+                category: "oldest",
+                dateOrder: 3,
+                views: 19800,
+                thumbnail: "https://imgds.net/snaps/2a6inuj7axo9mamq.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/vcl1dcm05ss1",
+                isBordered: false
+            },
+            {
+                id: 9,
+                title: "Koleksi Video Eksklusif Pilihan #9",
+                category: "new",
+                dateOrder: 2,
+                views: 22100,
+                thumbnail: "https://imgds.net/snaps/4emgeiq0roqma6i0.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/4bl8ld821h7t",
+                isBordered: false
+            },
+            {
+                id: 10,
+                title: "Koleksi Video Eksklusif Pilihan #10",
+                category: "oldest",
+                dateOrder: 1,
+                views: 9400,
+                thumbnail: "https://imgds.net/snaps/8nrpg9iba3kv3lfq.jpg",
+                videoType: "embed",
+                videoUrl: "https://playmogo.com/e/fxuh6j1llmn7",
+                isBordered: false
+            }
+        ];
+
+        // State Aplikasi
+        let currentTab = 'new';
+        let searchQuery = '';
+
+        // Elemen DOM
+        const videoGrid = document.getElementById('videoGrid');
+        const emptyState = document.getElementById('emptyState');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+        // Modal Elements
+        const videoModal = document.getElementById('videoModal');
+        const modalVideoElement = document.getElementById('modalVideoElement');
+        const modalIframeElement = document.getElementById('modalIframeElement');
+        const modalVideoTitle = document.getElementById('modalVideoTitle');
+        const modalVideoBadge = document.getElementById('modalVideoBadge');
+        const modalDirectLink = document.getElementById('modalDirectLink');
+
+        /**
+         * Merender daftar kartu video berdasarkan tab aktif & kata kunci pencarian
+         */
+        function renderVideos() {
+            let filtered = videosData.filter(video => 
+                video.title.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+
+            if (currentTab === 'new') {
+                filtered.sort((a, b) => b.dateOrder - a.dateOrder);
+            } else if (currentTab === 'trending') {
+                filtered.sort((a, b) => b.views - a.views);
+            } else if (currentTab === 'oldest') {
+                filtered.sort((a, b) => a.dateOrder - b.dateOrder);
+            }
+
+            videoGrid.innerHTML = '';
+
+            if (filtered.length === 0) {
+                videoGrid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+                return;
+            } else {
+                videoGrid.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                emptyState.classList.remove('flex');
+            }
+
+            filtered.forEach(video => {
+                const card = document.createElement('article');
+                const borderStyle = video.isBordered 
+                    ? 'border border-[#d4af37]' 
+                    : 'border border-[#262626]';
+
+                card.className = `video-card bg-[#181818] rounded-2xl overflow-hidden shadow-[0_2px_6px_rgba(0,0,0,0.3)] flex flex-col justify-between cursor-pointer ${borderStyle}`;
+                card.onclick = () => openVideoModal(video);
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Thumbnail Container dengan Tombol Play Gold di Tengah -->
+                        <div class="relative w-full aspect-[4/3] bg-black overflow-hidden group">
+                            <img 
+                                src="${video.thumbnail}" 
+                                alt="${video.title}" 
+                                loading="lazy"
+                                onerror="this.src='https://placehold.co/600x450/121212/d4af37?text=My+Videos'"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-90 group-hover:opacity-100"
+                            >
+                            <!-- Subtle dark tint -->
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                            
+                            <!-- Circular Bright Gold Play Button -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-brandOrange text-black flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                                    <i class="fa-solid fa-play text-base sm:text-lg ml-0.5"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Judul Video -->
+                        <div class="px-3 pt-3 pb-2">
+                            <h2 class="text-[13.5px] sm:text-[15px] font-bold text-titleBrown leading-[1.35] line-clamp-3">
+                                ${video.title}
+                            </h2>
+                        </div>
+                    </div>
+
+                    <!-- Footer Kartu: Label Channel & Indikator Titik Gold -->
+                    <div class="px-3 pb-3 pt-1 flex items-center justify-between mt-auto">
+                        <span class="text-[11px] sm:text-xs font-medium text-gray-400">
+                            My Videos
+                        </span>
+                        <span class="w-3.5 h-3.5 rounded-full bg-brandOrange inline-block"></span>
+                    </div>
+                `;
+
+                videoGrid.appendChild(card);
+            });
+        }
+
+        /**
+         * Mengubah kategori tab aktif (New / Trending / Oldest)
+         */
+        function setCategory(category) {
+            currentTab = category;
+
+            const tabs = ['new', 'trending', 'oldest'];
+            tabs.forEach(tab => {
+                const el = document.getElementById(`tab-${tab}`);
+                if (tab === category) {
+                    el.className = 'filter-tab flex-1 py-2 px-4 rounded-full text-sm font-semibold transition-all duration-200 bg-brandOrange text-black shadow-sm';
+                } else {
+                    el.className = 'filter-tab flex-1 py-2 px-4 rounded-full text-sm font-semibold transition-all duration-200 text-[#b0b0b0] hover:text-brandOrangeDark';
+                }
+            });
+
+            renderVideos();
+        }
+
+        /**
+         * Menangani input pencarian real-time
+         */
+        function handleSearch() {
+            searchQuery = searchInput.value.trim();
+            if (searchQuery.length > 0) {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+            }
+            renderVideos();
+        }
+
+        /**
+         * Menghapus teks pencarian
+         */
+        function clearSearch() {
+            searchInput.value = '';
+            searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            renderVideos();
+        }
+
+        /**
+         * Reset seluruh filter ke kondisi awal
+         */
+        function resetFilters(event) {
+            if (event) event.preventDefault();
+            clearSearch();
+            setCategory('new');
+        }
+
+        /**
+         * Membuka Modal Pemutar Video & Menjalankan Smartlink (jika dikonfigurasi)
+         */
+        function openVideoModal(video) {
+            if (SMARTLINK_URL && !hasTriggeredSmartlink) {
+                hasTriggeredSmartlink = true;
+                window.open(SMARTLINK_URL, '_blank');
+            }
+
+            modalVideoTitle.textContent = video.title;
+            modalVideoBadge.textContent = currentTab;
+            modalDirectLink.href = SMARTLINK_URL || video.videoUrl;
+
+            modalVideoElement.pause();
+            modalVideoElement.src = '';
+            modalVideoElement.classList.add('hidden');
+            
+            modalIframeElement.src = '';
+            modalIframeElement.classList.add('hidden');
+
+            if (video.videoType === 'embed') {
+                modalIframeElement.src = video.videoUrl;
+                modalIframeElement.classList.remove('hidden');
+            } else {
+                modalVideoElement.src = video.videoUrl;
+                modalVideoElement.classList.remove('hidden');
+                modalVideoElement.play().catch(() => {});
+            }
+
+            videoModal.classList.remove('hidden');
+            videoModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        /**
+         * Menutup Modal Pemutar Video
+         */
+        function closeVideoModal() {
+            modalVideoElement.pause();
+            modalVideoElement.src = '';
+            modalIframeElement.src = '';
+
+            videoModal.classList.add('hidden');
+            videoModal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        /**
+         * Handler tombol CTA di dalam modal
+         */
+        function handleSmartlinkClick(event) {
+            if (!SMARTLINK_URL) {
+                showToast("Memutar dalam mode HD...");
+            }
+        }
+
+        /**
+         * Menampilkan notifikasi toast singkat
+         */
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 2500);
+        }
+
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderVideos();
+        });
+    </script>
 </body>
 </html>
