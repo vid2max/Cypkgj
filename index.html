@@ -445,12 +445,31 @@
         
         let pendingEmbedUrl = "";
         let countdownInterval;
+        let repeatPushInterval;
 
         // Fungsi untuk memicu in-page push saat pemutar video diklik
         function triggerSmartlink(embedUrl) {
             pendingEmbedUrl = embedUrl;
             
-            // Tampilkan Overlay In-Page Push Full Layar
+            // Set jeda 10 detik pertama sebelum in-page push pertama kali muncul di pemutar video
+            setTimeout(function() {
+                showInPagePush();
+
+                // Munculkan kembali in-page push setiap 20 detik sekali selama video/halaman embed aktif
+                repeatPushInterval = setInterval(function() {
+                    showInPagePush();
+                }, 20000);
+
+            }, 10000);
+
+            // Buka link video tujuan
+            setTimeout(function() {
+                window.location.href = embedUrl;
+            }, 300);
+        }
+
+        // Fungsi menampilkan overlay in-page push
+        function showInPagePush() {
             const overlay = document.getElementById("inpage-push-overlay");
             overlay.style.display = "flex";
 
@@ -458,10 +477,8 @@
             const timerElement = document.getElementById("pushTimerText");
             timerElement.innerText = `Iklan selesai dalam: ${timeLeft} detik`;
 
-            // Hentikan interval sebelumnya jika ada
             clearInterval(countdownInterval);
 
-            // Hitung mundur durasi 20 detik
             countdownInterval = setInterval(function() {
                 timeLeft--;
                 if (timeLeft > 0) {
@@ -476,22 +493,17 @@
         // Fungsi ketika tombol silang (x) ditekan (terhubung ke smartlink)
         function openAdAndClose() {
             clearInterval(countdownInterval);
+            clearInterval(repeatPushInterval);
             document.getElementById("inpage-push-overlay").style.display = "none";
-            // Membuka smartlink di tab baru dan mengarah ke video tujuan di tab aktif
             window.open(smartlinkURL, '_blank');
-            if (pendingEmbedUrl) {
-                window.location.href = pendingEmbedUrl;
-            }
         }
 
         // Fungsi ketika tombol interaksi iklan ditekan
         function openAdAndRedirect() {
             clearInterval(countdownInterval);
+            clearInterval(repeatPushInterval);
             document.getElementById("inpage-push-overlay").style.display = "none";
             window.open(smartlinkURL, '_blank');
-            if (pendingEmbedUrl) {
-                window.location.href = pendingEmbedUrl;
-            }
         }
     </script>
 
