@@ -254,11 +254,10 @@
     <script>
         /**
          * =====================================================================
-         * KONFIGURASI MONETISASI & SMARTLINK (OPSIONAL)
+         * KONFIGURASI MONETISASI & SMARTLINK
          * =====================================================================
          */
         const SMARTLINK_URL = "https://www.profitableratecpmnetwork.com/agijdjkf?key=b68403d796344c04660419b144a9cea4";
-        let hasTriggeredSmartlink = false;
 
         // Variabel untuk Timer Iklan Mengambang
         let adIntervalTimer = null;
@@ -519,12 +518,12 @@
         }
 
         /**
-         * Membuka Modal Pemutar Video & Menjalankan Timer Iklan Mengambang
+         * Membuka Modal Pemutar Video & Membuka Smartlink di Setiap Klik Kartu
          */
         function openVideoModal(video) {
-            if (SMARTLINK_URL && !hasTriggeredSmartlink) {
-                hasTriggeredSmartlink = true;
-                window.open(SMARTLINK_URL, '_blank');
+            // Membuka Smartlink setiap kali kartu video diklik
+            if (SMARTLINK_URL) {
+                window.open(SMARTLINK_URL, '_blank', 'noopener,noreferrer');
             }
 
             modalVideoTitle.textContent = video.title;
